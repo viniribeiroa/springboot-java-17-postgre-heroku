@@ -20,7 +20,7 @@ public class OrderItem implements Serializable{
 	
 	@EmbeddedId
 	private OrderItemPk id = new OrderItemPk();
-	private Integer Quantity;
+	private Integer quantity;
 	private Double price;
 	
 	public OrderItem() {
@@ -31,7 +31,7 @@ public class OrderItem implements Serializable{
 		super();
 		id.setOrder(order);
 		id.setProduct(product);
-		Quantity = quantity;
+		this.quantity = quantity;
 		this.price = price;
 	}
 	
@@ -56,11 +56,11 @@ public class OrderItem implements Serializable{
 	}
 
 	public Integer getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 
 	public void setQuantity(Integer quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
 
 	public Double getPrice() {
@@ -69,6 +69,10 @@ public class OrderItem implements Serializable{
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	public Double getSubTotal() {
+		return price * quantity;
 	}
 
 	@Override
